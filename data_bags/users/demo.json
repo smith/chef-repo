@@ -1,0 +1,8 @@
+{
+    "id": "demo",
+    "groups": ["sysadmin"],
+    "shell": "/bin/bash",
+    "ssh_keys": [
+        "ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAIEAu5XM/CZYRiGbOrKmUOBMnGF7BWUwj7nuEHJizJ2V6qGD7Co21fwZVZcYds/slKrVUHo/P6yTU1xYm7STirGMHmWxQYHFRu4UpbmIXlsJeadxonDXYMPD+tOoHHWebUXCgU/esk+g/zWUSAUlSdsujgRNbOamPNkVT0FWL0xSLvs= smith@nlsmith.com"
+    ]
+}

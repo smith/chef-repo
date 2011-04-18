@@ -1,0 +1,25 @@
+{
+    "id": "demo",
+    "server_roles": ["demo_web_app"],
+    "type": { "demo_web_app": ["rails", "passenger_apache2"] },
+    "packages": { "libmysqlclient-dev": "" },
+    "gems": { "bundler": "1.0.12", "mysql": "2.8.1" },
+    "deploy_to": "/var/apps/demo",
+    "owner": "demo",
+    "group": "demo",
+    "database_master_role": ["demo_database_master"],
+    "databases": {
+        "production": {
+            "adapter": "mysql",
+            "database": "demo_rails_app_production",
+            "username": "demo",
+            "password": "ozee9ix3eefei|Pe"
+        }
+    },
+    "memcached_role": ["demo_cache"],
+    "memcached": { "production": { "settings": [] } },
+    "revision": { "production": "HEAD" },
+    "repository": "git://github.com/smith/demo-rails-app.git",
+    "force" : { "production": true },
+    "migrate": { "production": true }
+}
