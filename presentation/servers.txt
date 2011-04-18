@@ -1,0 +1,11 @@
+# These are the commands needed to create each server. Put their info in here
+# once created
+
+# cache
+knife rackspace server create --node-name cache --environment production --prerelease --run-list "role[demo_cache]" --server-name cache
+
+# db
+knife rackspace server create --node-name db --environment production --flavor 4 --image 49 --prerelease --run-list "role[demo_database_master]" --server-name db
+
+# web
+knife rackspace server create --node-name web --environment production --flavor 4 --image 49 --prerelease --run-list "role[demo_web_app]","role[demo_run_migrations]" --server-name web
