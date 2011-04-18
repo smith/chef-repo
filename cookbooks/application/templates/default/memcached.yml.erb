@@ -5,6 +5,6 @@
 <%- end %>
   servers:
 <%- @hosts.each do |h| %>
-    - <%= h['ipaddress'] %>:<%= h['memcached']['port'] %>
+    - <%= h[:memcached][:listen] %>:<%= h['memcached']['port'] %>
 <%- end %>
 <%- end %>

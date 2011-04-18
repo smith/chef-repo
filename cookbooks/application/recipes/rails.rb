@@ -30,8 +30,6 @@ if node.run_state[:seen_recipes].has_key?("ruby_enterprise")
   use_ree = true
 end
 
-node.default[:apps][app['id']][node.app_environment][:run_migrations] = false
-
 ## First, install any application specific packages
 if app['packages']
   app['packages'].each do |pkg,ver|
@@ -131,7 +129,7 @@ if app["database_master_role"]
       group app["group"]
       mode "644"
       variables(
-        :host => dbm['fqdn'],
+        :host => ((dbm[:cloud] || {})[:private_ips] || [])[0] || dbm['fqdn'],
         :databases => app['databases']
       )
     end
