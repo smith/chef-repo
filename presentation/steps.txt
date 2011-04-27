@@ -1,0 +1,57 @@
+# This is a rough outline of the steps needed to run this demo
+
+# Xcode tools/build essential/xml
+# Create opscode account
+# Create demo org
+# Download validation key & knife config
+# Download private key
+# Fork https://github.com/opscode/chef-repo
+git clone git@github.com:smith/demo-chef-repo.git
+cd demo-chef-repo
+
+mkdir .chef
+# Put private key, validation key & knife config in .chef
+chmod 600 .chef/*
+ln -s .chef ~/.chef # (optional)
+
+gem install chef --pre
+
+gem install knife-rackspace
+# Add:
+#   knife[:rackspace_api_key]  = "Your Rackspace API Key"
+#   knife[:rackspace_api_username] = "Your Rackspace API username"
+#   knife[:image] = 49 # Ubuntu 10.04
+#   knife[:flavor] = 4 # 2GB RAM/1 core CPU
+# to .chef/knife.rb
+
+# Create environments/production.rb
+knife environment from file environments/production.rb
+
+mkdir data_bags/apps
+touch data_bags/apps/demo.json
+# Create demo json
+knife data bag create apps
+knife data bag from file apps data_bags/apps/demo.json
+
+mkdir data_bags/users
+touch data_bags/users/demo.json
+# Create demo json
+knife data bag create users
+knife data bag from file users data_bags/users/demo.json
+
+# Create roles
+rake roles
+
+knife cookbook create demo --email nlloyds@gmail.com --license apachev2 --copyright "Nathan L Smith"
+# Edit cookbook
+knife cookbook upload demo
+
+knife cookbook site install users
+knife cookbook site install git
+knife cookbook site install memcached
+knife cookbook site install database
+knife cookbook site install application
+# fixes for application: 5dc7fa73a4f2916187ac16107b227c003a998a3e
+rake upload_cookbooks
+
+# see servers.txt for commands to create servers
