@@ -1,0 +1,1 @@
+cookbook 'nlsmith', :path => '/Users/smith/Projects/smith-chef-repo/cookbooks/nlsmith'

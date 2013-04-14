@@ -9,3 +9,6 @@ chef_server_url          "https://api.opscode.com/organizations/nlsmith"
 cache_type               'BasicFile'
 cache_options( :path => "#{ENV['HOME']}/.chef/checksums" )
 cookbook_path            ["#{current_dir}/../cookbooks"]
+
+knife[:digital_ocean_client_id] = ENV['DIGITAL_OCEAN_CLIENT_ID']
+knife[:digital_ocean_api_key]   = ENV['DIGITAL_OCEAN_API_KEY']
