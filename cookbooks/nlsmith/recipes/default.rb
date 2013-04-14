@@ -33,3 +33,9 @@ group 'admin' do
   members %w[ smith ]
   append true
 end
+
+%w[ nlsmith.com gallery.gottung.net gottung.net stmarks-umc.net ].each do |site|
+  web_app site do
+    template "#{site}.conf.erb"
+  end
+end

@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+  ServerName stmarks-umc.net
+  ServerAlias www.stmarks-umc.net
+  ServerAdmin webmaster@stmarks-umc.net
+
+  DocumentRoot /home/smith/Sites/stmarks-umc.net
+  <Directory />
+    AllowOverride All
+  </Directory>
+
+	ServerSignature Off
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+  ErrorLog /var/log/apache2/stmarks-umc.net.error.log
+  CustomLog /var/log/apache2/stmarks-umc.net.access.log combined
+</VirtualHost>

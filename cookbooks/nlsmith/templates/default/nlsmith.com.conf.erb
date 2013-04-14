@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+  ServerName nlsmith.com
+  ServerAlias *.nlsmith.com
+  ServerAdmin webmaster@nlsmith.com
+
+  DocumentRoot /home/smith/Sites/nlsmith.com
+  <Directory />
+    AllowOverride All
+  </Directory>
+
+	ServerSignature Off
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+  ErrorLog /var/log/apache2/nlsmith.com.error.log
+  CustomLog /var/log/apache2/nlsmith.com.access.log combined
+</VirtualHost>
