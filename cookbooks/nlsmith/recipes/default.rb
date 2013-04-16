@@ -23,7 +23,9 @@ include_recipe 'postfix::sasl_auth'
 include_recipe 'sudo'
 include_recipe 'vim'
 
-package 'mailutils'
+%w[ mailutils s3cmd ].each do |pkg|
+  package pkg
+end
 
 user 'smith' do
   home '/home/smith'
@@ -40,4 +42,20 @@ end
   web_app site do
     template "#{site}.conf.erb"
   end
+end
+
+template '/home/smith/.s3cfg' do
+  source 's3cfg.erb'
+  mode 0600
+  owner node['apache']['user']
+  group node['apache']['group']
+end
+
+cron 'backup' do
+  command 'cd /home/smith && s3cmd sync Sites s3://smith-sites > /dev/null'
+  minute '0'
+  hour '0'
+  user node['apache']['user']
+  mailto node['apache']['contact']
+  action :create
 end

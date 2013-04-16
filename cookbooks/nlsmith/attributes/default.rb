@@ -8,6 +8,7 @@
 #
 
 # Tone down apache settings for the tiny server
+override['apache']['contact'] = 'smith@nlsmith.com'
 override['apache']['prefork']['startservers']        = 1
 override['apache']['prefork']['minspareservers']     = 1
 override['apache']['prefork']['maxspareservers']     = 5
@@ -22,3 +23,5 @@ override['mysql']['tunable']['innodb_buffer_pool_size'] = '64M'
 # Sudo options
 override['authorization']['sudo']['groups']       = %w[ admin ]
 override['authorization']['sudo']['passwordless'] = true
+
+# Backup
