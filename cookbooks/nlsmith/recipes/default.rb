@@ -52,7 +52,7 @@ template '/home/smith/.s3cfg' do
 end
 
 cron 'backup' do
-  command 'cd /home/smith && s3cmd sync Sites s3://smith-sites > /dev/null'
+  command 'cd /home/smith && s3cmd sync --config=/home/smith/.s3cfg Sites s3://smith-sites > /dev/null'
   minute '0'
   hour '0'
   user node['apache']['user']
