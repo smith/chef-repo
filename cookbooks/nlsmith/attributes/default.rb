@@ -23,5 +23,3 @@ override['mysql']['tunable']['innodb_buffer_pool_size'] = '64M'
 # Sudo options
 override['authorization']['sudo']['groups']       = %w[ admin ]
 override['authorization']['sudo']['passwordless'] = true
-
-# Backup

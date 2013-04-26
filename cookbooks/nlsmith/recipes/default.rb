@@ -13,6 +13,7 @@ include_recipe 'apache2::mod_expires'
 include_recipe 'apache2::mod_headers'
 include_recipe 'apache2::mod_php5'
 include_recipe 'apache2::mod_rewrite'
+include_recipe 'chef-client'
 include_recipe 'mysql::server'
 include_recipe 'newrelic'
 include_recipe 'newrelic::php-agent'
@@ -21,9 +22,10 @@ include_recipe 'php::module_curl'
 include_recipe 'php::module_mysql'
 include_recipe 'postfix::sasl_auth'
 include_recipe 'sudo'
+include_recipe 'unattended_upgrades'
 include_recipe 'vim'
 
-%w[ mailutils s3cmd ].each do |pkg|
+%w[ ack-grep mailutils s3cmd ].each do |pkg|
   package pkg
 end
 
