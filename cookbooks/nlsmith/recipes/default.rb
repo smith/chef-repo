@@ -40,7 +40,7 @@ group 'admin' do
   append true
 end
 
-%w[ nlsmith.com gallery.gottung.net gottung.net stmarks-umc.net ].each do |site|
+%w[ iowajs.org nlsmith.com gallery.gottung.net gottung.net stmarks-umc.net ].each do |site|
   web_app site do
     template "#{site}.conf.erb"
   end
