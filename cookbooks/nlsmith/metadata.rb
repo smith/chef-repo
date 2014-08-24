@@ -4,7 +4,7 @@ maintainer_email "nlloyds@gmail.com"
 license          "All rights reserved"
 description      "Installs/Configures stuff for nlsmith.com and other sites on there."
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          "0.3.3"
+version          "0.3.4"
 supports         "ubuntu"
 depends          "apache2"
 depends          "chef-client"
