@@ -1,0 +1,22 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-12.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[apt]
+      - recipe[nlsmith::default]
+    attributes:
+      dev_mode: true
+      # We need a real license key for this service to start, so disable it in
+      # testing
+      newrelic:
+        server-monitor-agent:
+          service_actions: ['stop', 'disable']

@@ -22,7 +22,16 @@ set['mysql']['tunable']['innodb_buffer_pool_size'] = '64M'
 
 # Newrelic
 set['newrelic']['startup_mode'] = 'external'
+default['newrelic']['application_monitoring']['app_name'] = 'WordPress'
 
-# Sudo options
-set['authorization']['sudo']['groups']       = %w[ admin ]
+# Postfix
+# These don't get loaded properly by the postfix cookbook
+default['postfix']['main']['smtp_sasl_auth_enable'] = 'yes'
+default['postfix']['sasl_password_file'] = "#{node['postfix']['conf_dir']}/sasl_passwd"
+default['postfix']['main']['smtp_sasl_password_maps'] = "hash:#{node['postfix']['sasl_password_file']}"
+default['postfix']['main']['smtp_sasl_security_options'] = 'noanonymous'
+node.default['postfix']['main']['relayhost'] = '[smtp.sendgrid.net]:587'
+
+# Sudo
+set['authorization']['sudo']['groups']       = %w[ adm admin ]
 set['authorization']['sudo']['passwordless'] = true

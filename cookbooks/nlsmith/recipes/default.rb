@@ -7,6 +7,21 @@
 # All rights reserved - Do Not Redistribute
 #
 
+# chef-vault must be included first
+include_recipe 'chef-vault'
+
+secrets = chef_vault_item('vault', 'secrets')
+
+# Site-specific attriubtes
+node.default['newrelic']['application_monitoring']['license'] =
+  secrets['newrelic']['application_monitoring']['license']
+node.default['newrelic']['server_monitoring']['license'] =
+  secrets['newrelic']['server_monitoring']['license']
+node.default['postfix']['sasl']['smtp_sasl_user_name'] =
+  secrets['postfix']['sasl']['smtp_sasl_user_name']
+node.default['postfix']['sasl']['smtp_sasl_passwd'] =
+  secrets['postfix']['sasl']['smtp_sasl_passwd']
+
 include_recipe 'apache2'
 include_recipe 'apache2::mod_deflate'
 include_recipe 'apache2::mod_expires'
@@ -51,6 +66,7 @@ template '/home/smith/.s3cfg' do
   mode 0600
   owner node['apache']['user']
   group node['apache']['group']
+  variables(secrets: secrets)
 end
 
 cron 'backup' do

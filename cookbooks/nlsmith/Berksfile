@@ -1,0 +1,9 @@
+source 'https://supermarket.getchef.com'
+
+# Needed for test kitchen
+cookbook 'apt'
+
+# Newrelic has these as "recommends", which apparently won't pull them in
+cookbook 'curl'
+
+metadata
