@@ -50,6 +50,13 @@ user 'smith' do
   supports :manage_home => true
 end
 
+# Rob Beland, for St. Mark's youth site.
+user 'rob' do
+  home '/home/rob'
+  shell '/bin/bash'
+  supports :manage_home => true
+end
+
 group 'admin' do
   members %w[ smith ]
   append true
