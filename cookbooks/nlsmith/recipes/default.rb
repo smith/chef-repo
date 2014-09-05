@@ -40,7 +40,7 @@ include_recipe 'sudo'
 include_recipe 'unattended_upgrades'
 include_recipe 'vim'
 
-%w[ ack-grep mailutils s3cmd unzip zip ].each do |pkg|
+%w[ ack-grep mailutils ncftp s3cmd unzip zip ].each do |pkg|
   package pkg
 end
 
