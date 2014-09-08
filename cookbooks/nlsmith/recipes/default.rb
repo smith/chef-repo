@@ -57,6 +57,19 @@ user 'rob' do
   supports :manage_home => true
 end
 
+directory '/home/rob/.ssh' do
+  owner 'rob'
+  group 'rob'
+  mode '0700'
+end
+
+cookbook_file '/home/rob/.ssh/authorized_keys' do
+  source 'beland_key.pub'
+  owner 'rob'
+  group 'rob'
+  mode '0600'
+end
+
 group 'admin' do
   members %w[ smith ]
   append true
