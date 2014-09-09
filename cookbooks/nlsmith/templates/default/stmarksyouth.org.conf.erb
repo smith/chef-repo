@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+  ServerName stmarksyouth.org
+  ServerAlias www.stmarksyouth.org
+  ServerAdmin webmaster@nlsmith.com
+
+  DocumentRoot /home/smith/Sites/stmarksyouth.org
+  <Directory /home/smith/Sites/stmarksyouth.org/>
+    AllowOverride All
+  </Directory>
+
+	ServerSignature Off
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+  ErrorLog /var/log/apache2/stmarksyouth.org.error.log
+  CustomLog /var/log/apache2/stmarksyouth.org.access.log combined
+</VirtualHost>

@@ -75,7 +75,7 @@ group 'admin' do
   append true
 end
 
-%w[ iowajs.org nlsmith.com gottung.net stmarks-umc.net ].each do |site|
+%w[ iowajs.org nlsmith.com gottung.net stmarks-umc.net stmarksyouth.org ].each do |site|
   web_app site do
     template "#{site}.conf.erb"
   end
